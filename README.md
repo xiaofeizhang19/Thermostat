@@ -20,4 +20,9 @@ So that I don't get hypothermia
 As a user
 I want the max temp to be 25 if power saving is turned on
 So that I don't waste lots of money
+
+As a user
+I want the max temp to bew 32 if power saving is turned off
+So that I don't boil to death
+
 ```

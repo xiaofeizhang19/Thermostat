@@ -17,7 +17,7 @@ describe('Thermostat', function() {
     thermostat.down(5);
     expect(thermostat.temperature).toEqual(15);
   });
-  
+
   it('cannot be turned down lower than 10', function() {
     thermostat.down(11);
     expect(thermostat.temperature).toEqual(10);
@@ -27,5 +27,11 @@ describe('Thermostat', function() {
     thermostat.setPowerSave(true);
     thermostat.up(10);
     expect(thermostat.temperature).toEqual(25);
+  });
+
+  it('sets max temp to 32 if power save is off', function() {
+    thermostat.setPowerSave(false);
+    thermostat.up(15);
+    expect(thermostat.temperature).toEqual(32);
   });
 });
