@@ -8,4 +8,8 @@ So I can sit in a warm lounge
 As a user
 I want to increase the temperature of my thermostat
 so that I can have a warmer room
+
+As a user
+I want to decrease the temperature of my thermostat
+So I can chill in a cooler room
 ```
