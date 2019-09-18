@@ -22,7 +22,15 @@ I want the max temp to be 25 if power saving is turned on
 So that I don't waste lots of money
 
 As a user
-I want the max temp to bew 32 if power saving is turned off
+I want the max temp to be 32 if power saving is turned off
 So that I don't boil to death
+
+As a user
+I want the power saving mode to be on by default
+So that I don't waste all my hard earned money
+
+As a user
+I want to be able to reset the temp to 20 with a reset function
+So that I can easily reset the temp
 
 ```

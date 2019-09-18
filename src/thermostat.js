@@ -1,10 +1,11 @@
+const defaultTemperature = 20;
 const lowestTemperature = 10;
 const powerSaveMax = 25;
 const maxTemperature = 32;
 
 function Thermostat() {
   this.temperature = 20;
-  this.powerSave = new Boolean;
+  this.powerSave = true;
 };
 
 Thermostat.prototype.up = function(number){
@@ -19,6 +20,10 @@ Thermostat.prototype.down = function(number){
 
 Thermostat.prototype.setPowerSave = function(setting){
   this.powerSave = setting;
+};
+
+Thermostat.prototype.reset = function(){
+  this.temperature = defaultTemperature;
 };
 
 Thermostat.prototype._maxTemp = function() {

@@ -34,4 +34,13 @@ describe('Thermostat', function() {
     thermostat.up(15);
     expect(thermostat.temperature).toEqual(32);
   });
+
+  it('the power save should default to true', function(){
+    expect(thermostat.powerSave).toEqual(true);
+  });
+
+  it('resets the temp back to 20', function(){
+    thermostat.reset();
+    expect(thermostat.temperature).toEqual(20);
+  });
 });
