@@ -33,4 +33,8 @@ As a user
 I want to be able to reset the temp to 20 with a reset function
 So that I can easily reset the temp
 
+As a user
+I want to be able to see the thermostat's current energy usage
+So that I be smug
+
 ```

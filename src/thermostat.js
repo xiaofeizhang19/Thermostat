@@ -2,6 +2,8 @@ const defaultTemperature = 20;
 const lowestTemperature = 10;
 const powerSaveMax = 25;
 const maxTemperature = 32;
+const highUsageTemp = 25
+const lowUsageTemp = 18
 
 function Thermostat() {
   this.temperature = 20;
@@ -15,7 +17,7 @@ Thermostat.prototype.up = function(number){
 
 Thermostat.prototype.down = function(number){
   this.temperature -= number;
-  if (this.temperature < lowestTemperature) {this.temperature = lowestTemperature}; 
+  if (this.temperature < lowestTemperature) {this.temperature = lowestTemperature};
 };
 
 Thermostat.prototype.setPowerSave = function(setting){
@@ -24,6 +26,12 @@ Thermostat.prototype.setPowerSave = function(setting){
 
 Thermostat.prototype.reset = function(){
   this.temperature = defaultTemperature;
+};
+
+Thermostat.prototype.currentUsage = function(){
+  if (this.temperature >= highUsageTemp) {return 'high-usage'}
+  if (this.temperature < lowUsageTemp) {return 'low-usage'}
+  return 'medium-usage';
 };
 
 Thermostat.prototype._maxTemp = function() {
