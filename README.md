@@ -12,4 +12,8 @@ so that I can have a warmer room
 As a user
 I want to decrease the temperature of my thermostat
 So I can chill in a cooler room
+
+As a user
+I want to be prevented from decreasing the temperature below 10
+So that I don't get hypothermia
 ```
