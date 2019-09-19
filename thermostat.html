@@ -1,44 +1,11 @@
 <html>
-<style>
-  table, th, td {
-    border:1px solid black;
-    border-collapse:collapse;
-    background-color:#ffdab9;
-    margin: auto;
-    box-shadow: 5px 10px;
-  }
-  h1 {
-    color:white;
-    font-size: 100px;
-  } 
-  button {
-    color:red;
-    font-size: 30px;
-  }
-  button.updown {
-    width: 90px;
-    display: block;
-    margin: auto;
-  }
-  input {
-    font: 25px "Helvetica", "Arial", "sans-serif";
-    color:green;
-  }
-
-  div {
-    font-size: 30px
-  }
-
-  div.temp {
-    font-size: 60px
-  }
-</style>
 
 <script src="./src/thermostat.js"></script>
 <script src="https://code.jquery.com/jquery-3.2.0.min.js"></script>
 <script src="./src/interface.js"></script>
 
 <head>
+  <link rel="stylesheet" href="thermostat.css">
   <center><h1> Thermostat </h1></center>
 </head>
 <body bgcolor="grey">
@@ -64,6 +31,20 @@
       </td>
       <td>
         <button id="powerSave"> PowerSave </button>
+      </td>
+    </tr>
+  </table>
+  </br>
+  <table>
+    <tr>
+      <td><div>Please enter a City: </div></td>
+      <td>
+        <select id="cities">
+            <option id="London">London</option>
+            <option id="Paris">Paris</option>
+            <option id="Berlin">Berlin</option>
+            <option id="Helsinki">Helsinki</option>
+        </select>
       </td>
     </tr>
   </table>

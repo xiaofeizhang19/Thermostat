@@ -1,7 +1,7 @@
 thermostat = new Thermostat();
 
-
 $(document).ready(function(){
+  getCityWeather("London");
   updateScreen();
 
   $("#upButton").click(function(event){
@@ -28,6 +28,11 @@ $(document).ready(function(){
     updateScreen();
   });
 
+  $("#cities").change(function(){
+    var selectedCity = $("#cities").val();
+    getCityWeather(selectedCity);
+  });
+
   function updateScreen(){
       $("#temperature").html(thermostat.temperature);
       $("#settings").html(thermostat.powerSaveDisplay());
@@ -42,10 +47,11 @@ $(document).ready(function(){
       $("#weather").html(weather);
   };
 
-  var city = null;
-  $.get("http://api.openweathermap.org/data/2.5/weather?q=London&units=metric&APPID=69312a7de5429a8d9bdbc71b2e7d1710", function(getWeather) {
-    weather = getWeather.name + ": " + getWeather.main.temp + "&#176";
-    updateScreen();
-  });
+  function getCityWeather(city){
+    $.get("http://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=metric&APPID=69312a7de5429a8d9bdbc71b2e7d1710", function(getWeather) {
+      weather = getWeather.name + ": " + getWeather.main.temp + "&#176";
+      updateScreen();
+    });
+  };
 });
 
