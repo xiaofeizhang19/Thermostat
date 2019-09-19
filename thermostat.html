@@ -5,10 +5,11 @@
     border-collapse:collapse;
     background-color:#ffdab9;
     margin: auto;
+    box-shadow: 5px 10px;
   }
   h1 {
     color:white;
-    font-size: 100px
+    font-size: 100px;
   } 
   button {
     color:red;
@@ -35,53 +36,8 @@
 
 <script src="./src/thermostat.js"></script>
 <script src="https://code.jquery.com/jquery-3.2.0.min.js"></script>
+<script src="./src/interface.js"></script>
 
-<script>
-thermostat = new Thermostat();
-
-$(document).ready(function(){
-  updateScreen();
-
-  $("#upButton").click(function(event){
-    thermostat.up(1);
-    updateScreen();
-  });
-
-  $("#downButton").click(function(event){
-    thermostat.down(1);
-    updateScreen();
-  });
-
-  $("#reset").click(function(event){
-    thermostat.reset();
-    updateScreen();
-  });
-
-  $("#powerSave").click(function(event){
-    if (thermostat.powerSave === false){
-      thermostat.setPowerSave(true);
-    }else{
-      thermostat.setPowerSave(false);
-    }
-    updateScreen();
-  });
-
-  function updateScreen(){
-      $("#temperature").html(thermostat.temperature);
-      $("#settings").html(thermostat.powerSaveDisplay());
-      $("#energyLevel").html(thermostat.currentUsage());
-      if(thermostat.currentUsage()==='high-usage'){
-        $("#energyLevel").css('color','red');
-      } else if (thermostat.currentUsage()==='low-usage'){
-        $("#energyLevel").css('color','green');
-      } else {
-        $("#energyLevel").css('color','orange');
-      };
-  };
-});
-
-
-</script>
 <head>
   <center><h1> Thermostat </h1></center>
 </head>
@@ -102,7 +58,10 @@ $(document).ready(function(){
       <td>  </button></td>
     </tr>
     <tr></tr>
-      <td><div id="settings"></div></td>
+      <td>
+        <div id="settings"></div>
+        <div id="weather"></div>
+      </td>
       <td>
         <button id="powerSave"> PowerSave </button>
       </td>
