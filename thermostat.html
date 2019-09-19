@@ -1,34 +1,114 @@
 <html>
 <style>
   table, th, td {
-    border: 1px solid black;
-    border-collapse: collapse;
-    background-color: #ffdab9;
+    border:1px solid black;
+    border-collapse:collapse;
+    background-color:#ffdab9;
+    margin: auto;
   }
+  h1 {
+    color:white;
+    font-size: 100px
+  } 
   button {
-    color: red
+    color:red;
+    font-size: 30px;
+  }
+  button.updown {
+    width: 90px;
+    display: block;
+    margin: auto;
   }
   input {
-    font: 25px "Helvetica", "Arial", "sans-serif"
+    font: 25px "Helvetica", "Arial", "sans-serif";
+    color:green;
+  }
+
+  div {
+    font-size: 30px
+  }
+
+  div.temp {
+    font-size: 60px
   }
 </style>
 
-<h1> Thermostat </h1>
+<script src="./src/thermostat.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.0.min.js"></script>
+
+<script>
+thermostat = new Thermostat();
+
+$(document).ready(function(){
+  updateScreen();
+
+  $("#upButton").click(function(event){
+    thermostat.up(1);
+    updateScreen();
+  });
+
+  $("#downButton").click(function(event){
+    thermostat.down(1);
+    updateScreen();
+  });
+
+  $("#reset").click(function(event){
+    thermostat.reset();
+    updateScreen();
+  });
+
+  $("#powerSave").click(function(event){
+    if (thermostat.powerSave === false){
+      thermostat.setPowerSave(true);
+    }else{
+      thermostat.setPowerSave(false);
+    }
+    updateScreen();
+  });
+
+  function updateScreen(){
+      $("#temperature").html(thermostat.temperature);
+      $("#settings").html(thermostat.powerSaveDisplay());
+      $("#energyLevel").html(thermostat.currentUsage());
+      if(thermostat.currentUsage()==='high-usage'){
+        $("#energyLevel").css('color','red');
+      } else if (thermostat.currentUsage()==='low-usage'){
+        $("#energyLevel").css('color','green');
+      } else {
+        $("#energyLevel").css('color','orange');
+      };
+  };
+});
+
+
+</script>
+<head>
+  <center><h1> Thermostat </h1></center>
+</head>
+<body bgcolor="grey">
   <table border="1" >
     <tr>
-      <td> <input type='text' value='10'></td>
-      <td> <button> Up </button></td>
+      <td align="center" >Current Temperature <div class="temp" id="temperature">99</div></td>
+      <td> 
+        <button class="button updown" id="upButton"> + </button>
+        <button class="button updown" id="downButton"> - </button>
+        <button class="button updown" id="reset"> Reset </button>
+        </td>
+
+      </td>
     </tr>
     <tr>
-      <td> <input type='text' value='Energy = high'></td>
-      <td> <button> Down </button></td>
+      <td> <div id="energyLevel">Energy High</div></td>
+      <td>  </button></td>
     </tr>
     <tr></tr>
-      <td> <input type='text' value='default stuff'></td>
-      <td> <button> Reset </button></td>
+      <td><div id="settings"></div></td>
+      <td>
+        <button id="powerSave"> PowerSave </button>
+      </td>
     </tr>
-
   </table>
   </br>
-</br>
+  </br>
+</body>
 </html>

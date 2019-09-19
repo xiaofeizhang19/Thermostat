@@ -17,6 +17,7 @@ Thermostat.prototype.up = function(number){
 
 Thermostat.prototype.down = function(number){
   this.temperature -= number;
+  if (this.temperature > this._maxTemp()) {this.temperature = this._maxTemp()};
   if (this.temperature < lowestTemperature) {this.temperature = lowestTemperature};
 };
 
@@ -37,4 +38,9 @@ Thermostat.prototype.currentUsage = function(){
 Thermostat.prototype._maxTemp = function() {
   if (this.powerSave) {return powerSaveMax};
   return maxTemperature;
+};
+
+Thermostat.prototype.powerSaveDisplay = function() {
+  if (this.powerSave) {return "Power Save : On"};
+  return "Power Save : Off";
 };
