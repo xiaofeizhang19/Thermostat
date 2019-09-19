@@ -11,14 +11,17 @@ function Thermostat() {
 };
 
 Thermostat.prototype.up = function(number){
+  if (this.temperature + number > this._maxTemp()) {
+    throw `Maximum temperature set to ${this._maxTemp()}!`
+  }
   this.temperature += number;
-  if (this.temperature > this._maxTemp()) {this.temperature = this._maxTemp()};
 };
 
 Thermostat.prototype.down = function(number){
+  if (this.temperature - number < lowestTemperature) {
+    throw `Minimum temperature set to ${lowestTemperature}!`
+  }
   this.temperature -= number;
-  if (this.temperature > this._maxTemp()) {this.temperature = this._maxTemp()};
-  if (this.temperature < lowestTemperature) {this.temperature = lowestTemperature};
 };
 
 Thermostat.prototype.setPowerSave = function(setting){
@@ -30,17 +33,25 @@ Thermostat.prototype.reset = function(){
 };
 
 Thermostat.prototype.currentUsage = function(){
-  if (this.temperature >= highUsageTemp) {return 'high-usage'}
-  if (this.temperature < lowUsageTemp) {return 'low-usage'}
+  if (this.temperature >= highUsageTemp) {
+    return 'high-usage';
+  }
+  if (this.temperature < lowUsageTemp) {
+    return 'low-usage';
+  }
   return 'medium-usage';
 };
 
 Thermostat.prototype._maxTemp = function() {
-  if (this.powerSave) {return powerSaveMax};
+  if (this.powerSave) {
+    return powerSaveMax;
+  }
   return maxTemperature;
 };
 
 Thermostat.prototype.powerSaveDisplay = function() {
-  if (this.powerSave) {return "Power Save : On"};
+  if (this.powerSave) {
+    return "Power Save : On";
+  }
   return "Power Save : Off";
 };
